@@ -43,4 +43,12 @@ and we can use the code to run lua script file
 luaL_dofile(luaState, "xxxx.lua");
 ```
 
+or run lau script from memory directly
+```c++
+luaL_dostring(lauState, <lau script string>);
+```
 
+and please don't forget deinit the Lua state pointer in your code
+```c++
+lua_close(luaState);
+```
