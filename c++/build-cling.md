@@ -13,4 +13,3 @@ cling source code, it contains some directive and definition like:
 
 but, I will try to build cling by using the second method (linux+mingw) first.
 
-[c++/build-cling.md]
