@@ -10,6 +10,7 @@ cling source code, it contains some directive and definition like:
 * upper/lower case header files, likes: Windows.h, Shlwapi.h, ...
   it makes linux+mingw build failed, because the ext4 partition and linux system is case sensitive for file name
 * pragma comment(lib, ...),  it is not supportted by gcc
+* __uuidof, it should be defined in the _mingw.h file, it depends on USE___UUIDOF definition, and the USE___UUIDOF macro is defined to 1 while _MSC_VER is defined
 
 but, I will try to build cling by using the second method (linux+mingw) first.
 
