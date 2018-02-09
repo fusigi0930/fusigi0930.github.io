@@ -6,6 +6,11 @@
 
 ## development tools
 
+## web tools
+
+### tracking system
+* [Install taiga](web/install-taiga.md)
+
 ## operating system
 
 ## simulator
