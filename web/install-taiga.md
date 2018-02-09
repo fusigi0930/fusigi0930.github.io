@@ -116,11 +116,13 @@ python manage.py loaddata initial_project_templates
 python manage.py compilemessages
 python manage.py collectstatic --noinput
 ```
+
 after the commands, the taiga has a default user "admin" with password "123123".
 
 * setting backend
 create the python file in ~/taiga-back/settings/local.py with content:
-```
+
+```python
 from .common import *
 
 DATABASES = {
