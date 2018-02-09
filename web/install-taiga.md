@@ -120,7 +120,7 @@ after the commands, the taiga has a default user "admin" with password "123123".
 
 * setting backend
 create the python file in ~/taiga-back/settings/local.py with content:
-```python
+```
 from .common import *
 
 DATABASES = {
