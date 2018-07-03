@@ -12,6 +12,7 @@
 * [Install taiga](web/install-taiga.md)
 
 ## operating system
+* [hooking elf process](system/elf/hook-system-command.md)
 
 ## simulator
 
