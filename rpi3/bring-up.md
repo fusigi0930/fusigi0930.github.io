@@ -23,3 +23,5 @@ the GPU load bootcode.bin from the first partition in target sd with FAT format,
 ## 5. set the u-boot boot environment
 
 ## 6. put the relate os rootfs
+
+PS. https://github.com/sakaki-/gentoo-on-rpi3-64bit
