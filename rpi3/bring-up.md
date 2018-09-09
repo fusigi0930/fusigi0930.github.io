@@ -94,6 +94,7 @@ cp dts/bcm2710-rpi-3-b-plus.dtb <boot>
 
 ## 6. put the relate os rootfs
 for example, the ubuntu-base rootfs can be downloaded from canonical web site:
+### 6.1. ubuntu base
 ```shell
 wget cdimage.ubuntu.com/cdimage/ubuntu-base/bionic/daily/current/bionic-baed-arm64.tar.gz
 wget cdimage.ubuntu.com/cdimage/ubuntu-base/release/bionic/release/ubuntu-base-18.04-base-arm64.tar.gz
@@ -102,6 +103,19 @@ extract the rootfs tarball to rootfs partition:
 ```shell
 tar xzvf bionic-base-arm64.tar.gz --directory=<rootfs>
 sync
+```
+
+### 6.2 ubuntu server
+the ubuntu server usually provided by using ISO format, we have to download the iso file first, for example:
+
+```shell
+wget http://cdimage.ubuntu.com/ubuntu-server/bionic/daily/current/bionic-server-arm64.iso
+```
+and extract the rootfs from iso file:
+```shell
+sudo mount -o loop bionic-server-arm64.iso temp
+sudo unsquashfs -d roofs temp/install/filesystem.squashfs
+sudo cp rootfs <rootfs mount point> -rfa
 ```
 
 after the setup, it can get a ubuntu 18.04 (base) for raspberry pi3 b+
