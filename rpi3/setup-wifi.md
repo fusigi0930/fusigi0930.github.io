@@ -57,5 +57,58 @@ insmod /lib/modules/brcmfmac.ko
 normally, the wlan0 will be created and we can use it to do next setting for wpa supplicant.
 
 ## 4. wpa supplicant configure
+the ubuntu 18.04 server (arm64 version) dose not preload the wpa_supplicant, it needs install wpa_supplicant first.
 
+### 4.1. install wpa_supplicant
+it can find the wpa_supplicant package and relates package from http://ports.ubuntu.com/pool/main
+* libnl-3-200_3.2.21-1_arm64.deb
+* libnl-genl-3-200_3.2.21-1_arm64.deb
+* multiarch-support_2.27-3ubuntu1_arm64.deb
+* libpcsclite1_1.8.23-1_arm64.deb
+* wpasupplicant_2.6-18ubuntu1_arm64.deb
+
+then, it can use dpkg to install them:
+```shell
+dpkg -i multiarch-support_2.27-3ubuntu1_arm64.deb
+dpkg -i libpcsclite1_1.8.23-1_arm64.deb
+dpkg -i libnl-3-200_3.2.21-1_arm64.deb
+dpkg -i libnl-genl-3-200_3.2.21-1_arm64.deb
+dkpg -i wpasupplicant_2.6-18ubuntu1_arm64.deb
+```
+
+### 4.2. initial wpa_supplicant
+first it needs a wpa_supplicant.conf file with content:
+```shell
+ctrl_interface=/var/run/wpa_supplicant
+update_config=1
+```
+
+
+then, launch the wpa_supplicant with arguments:
+```shell
+wpa_supplicant -B -D nl80211 -i wlan0 -c wpa_supplicant.conf
+```
+
+after this, the wpa_supplicant should be started and it can use wpa_cli to control it:
+```shell
+wpa_cli -i wlan0
+scan
+scan_result
+```
+
+### 4.3. setting the wifi ssid and password
+use the wpa_passphrase can generate the wpa_supplicant configure for a ssid:
+```shell
+wpa_passphrase <ssid> <pass>
+```
+for example:
+```shell
+wpa_passphrase ssid-doraemon doraemon
+
+network={
+        ssid="ssid-doraemon"
+        #psk="doraemon"
+        psk=5c0ea2621a502d013e9e1b4a85ffa5811eb77564f125582268c7bbf0c69c6683
+}
+```
 ## 5. integrate into ubuntu system
