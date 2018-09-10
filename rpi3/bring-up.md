@@ -90,7 +90,7 @@ cp dts/bcm2710-rpi-3-b-plus.dtb <boot>
 
 ## 4. set the config.txt file for GPU bootcode
 
-## 5. set the cmdline.txt file
+## 5. set the cmdline.txt file for kernel ccmdline
 
 ## 6. put the relate os rootfs
 for example, the ubuntu-base rootfs can be downloaded from canonical web site:
