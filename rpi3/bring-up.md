@@ -89,9 +89,25 @@ cp dts/bcm2710-rpi-3-b-plus.dtb <boot>
 ```
 
 ## 4. set the config.txt file for GPU bootcode
-
+the config.txt is used by bootcode and it will load start.elf, the following is the example to boot a ubuntu system:
+```shell
+kernel=kernel8.img
+arm_64bit=1
+device_tree=bcm2710-rpi-3-b-plus.dtb
+framebuffer_depth=16
+start_x=1
+enable_uart=1
+core_freq=400
+hdmi_force_hotplug=1
+framebuffer_swap=1
+disable_overscan=1
+gpu_mem=64
+```
 ## 5. set the cmdline.txt file for kernel ccmdline
-
+the cmdline is the kernel boot cmdline, it will be passed from start.elf, the following is the example for ubuntu system:
+```shell
+dwc_otg.lpm_enable=0 console=ttyS0,115200 root=/dev/mmcblk0p2 rw rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait loglevel=7 net.ifnames=0 biosdevname=0
+```
 ## 6. put the relate os rootfs
 for example, the ubuntu-base rootfs can be downloaded from canonical web site:
 ### 6.1. ubuntu base
