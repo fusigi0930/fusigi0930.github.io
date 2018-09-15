@@ -17,3 +17,4 @@
 ## development board
 ### raspberry pi3 b+
 * [bring up raspberry pi3 b+](rpi3/bring-up.md)
+* [setup ubuntu18.04 wifi in reasberry pi3 b+](rpi3/setup-wifi.md)

@@ -77,12 +77,11 @@ dkpg -i wpasupplicant_2.6-18ubuntu1_arm64.deb
 ```
 
 ### 4.2. initial wpa_supplicant
-first it needs a wpa_supplicant.conf file with content:
+first， it needs a wpa_supplicant.conf file with content:
 ```shell
 ctrl_interface=/var/run/wpa_supplicant
 update_config=1
 ```
-
 
 then, launch the wpa_supplicant with arguments:
 ```shell
@@ -112,3 +111,76 @@ network={
 }
 ```
 ## 5. integrate into ubuntu system
+set start wifi service after start system
+### 5.1. create a init.d scirpt
+create a script to install wifi driver with content:
+```shell
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          wifi
+# Required-Start:
+# Required-Stop:
+# Should-Start:
+# Default-Start:     2 3 4 5
+# Default-Stop:
+# X-Interactive:
+# Short-Description: wifi
+### END INIT INFO
+
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+MODFILE=/lib/modules/brcmfmac.ko
+MODUTIL=/lib/modules/brcmutil.ko
+MODUTIL_NAME=brcmutil
+MODFILE_NAME=brcmfmac
+
+case $1 in
+        start)
+                if [ "$(lsmod | grep $MODFILE_NAME | wc -l)" != "0" ] || [ "$(lss
+mod | grep $MODFILE_NAME | wc -l)" != "0" ]; then
+                        $0 stop
+                fi
+
+                insmod $MODUTIL
+                insmod $MODFILE
+                ;;
+        stop)
+                rmmod $MODFILE_NAME 2>&1 > /dev/null
+                rmmod $MODUTIL_NAME 2>&1 > /dev/null
+                ;;
+        restart|force-reload)
+                $0 stop
+                sleep 1
+                $0 start
+                ;;
+        *)
+                echo not support command argument $1
+                exit 1
+                ;;
+esac
+
+exit 0
+```
+
+### 5.2. update rc.d
+let ubuntu install wifi driver while starting up:
+```shell
+update-rc.d wifi defaults
+```
+
+### 5.3. setup netplan
+for now, wpa_supplicant will be called from netplan, setup wifi network in netplan as file: /etc/netplan/01-wifi.yaml
+```shell
+network:
+  version: 2
+  renderer: networkd
+  wifis:
+    wlan0:
+      dhcp4: yes
+      dhcp6: no
+      gateway4: 192.168.10.1
+      nameservers:
+        addresses: [192.168.10.1, 8.8.8.8]
+      access-points:
+        "ssid-dormaemon":
+          password: "doraemon"
+```  
