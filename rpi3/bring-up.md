@@ -21,7 +21,15 @@ for example, ubuntu at least need a rootfs partition, so it need 2 partition for
 
 it can use the command to create sdcard:
 ```shell
+dd if=/dev/zero of=/dev/sdX bs=1M count=1
+sfdisk /dev/sdX < EOF
+4096,20480,b
+,,83
+EOF
 
+mkfs.vfat -F32 /dev/sdX1
+fatlabel /dev/sdX1 BOOT
+mkfs.ext4 /dev/sdX2 -Lrootfs
 ```
 ### 3.1 GPU firmware and binary
 the boot partition need binaries to boot the target board:
