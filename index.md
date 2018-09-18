@@ -13,6 +13,7 @@
 
 ## operating system
 * [hooking elf process](system/elf/hook-system-command.md)
+* [setting pppoe in ubuntu 18.04](system/pppoe/setting-pppoe.md)
 
 ## development board
 ### raspberry pi3 b+
