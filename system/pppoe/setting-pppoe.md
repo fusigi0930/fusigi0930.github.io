@@ -31,5 +31,6 @@ pon /etc/ppp/peers/dsl-provider
 * disable
 
 ```shell
-poff
+poff -a
 ```
+after the pppoe connection is established, it will use the interface "ppp0"
