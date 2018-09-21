@@ -51,12 +51,12 @@ cp firmware/boot/fixup*.dat <boot>/
 
 the config.txt and cmdline.txt are not stored in the github firmware repository, it will stored in my personal github repository: https://github.com/fusigi0930
 ```shell
-git clone https://github.com/fusigi0930
+git clone https://github.com/fusigi0930/rpi-build
 ```
 then copy the config.txt and cmdline.txt into boot partition:
 ```shell
-cp <>/config.txt <boot>/
-cp <>/cmdline.txt <boot>/
+cp rpi-build/config-ubuntu.txt <boot>/
+cp rpi-build/cmdline-ubuntu.txt <boot>/
 ```
 
 ### 3.2 u-boot for CPU
