@@ -5,6 +5,7 @@
 * [using Lua](lua/using-lua.md)
 
 ## development tools
+* [simple debug methods](system/linux/debug/analyze-trace-process.md)
 
 ## web tools
 
