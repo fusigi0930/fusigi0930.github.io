@@ -249,8 +249,6 @@ recvfrom(3, "\x30\x03\x81\x80\x00\x01\x00\x09\x00\x00\x00\x00\x03\x77\x77\x77\x0
 socket(AF_NETLINK, SOCK_RAW, NETLINK_ROUTE) = 3
 bind(3, {sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, 12) = 0
 getsockname(3, {sa_family=AF_NETLINK, nl_pid=14698, nl_groups=00000000}, [12]) = 0
-sendto(3, {{len=20, type=RTM_GETADDR, flags=NLM_F_REQUEST|NLM_F_DUMP, seq=1538124532, pid=0}, {ifa_family=AF_UNSPEC, ...}}, 20, 0, {sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, 12) = 20
-recvmsg(3, {msg_name={sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, .....
 
 ```
 it shows the actions for networks process
