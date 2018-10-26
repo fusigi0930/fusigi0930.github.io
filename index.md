@@ -7,6 +7,7 @@
 ## development
 * [hooking elf process](system/elf/hook-system-command.md)
 * [simple debug methods](system/linux/debug/analyze-trace-process.md)
+* [android app get property method](android/app/getprop.md)
 
 ### tracking system
 * [Install taiga](web/install-taiga.md)
