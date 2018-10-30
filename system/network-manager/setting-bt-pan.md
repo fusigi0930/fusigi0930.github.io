@@ -5,14 +5,14 @@ that means, we need setup the bluetooth first then set the network-manager.
 ## 1. pair the bluetooth device
 pair the bluetooth device with PAN profile and enable the bluetooth PAN.
 
-## 2. configure the bluez
+<!--## 2. configure the bluez
 for example:
 after pair the bluetooth device, and it mac address is 7c:2e:bd:9c:b1:ab
 ```shell
 sudo dbus-send --system --type=method_call --dest=org.bluez /org/bluez/hci0/dev_7C_2E_BD_9C_B1_AB org.bluez.Network1.Connect string:'nap'
 ```
-
-## 3. connect the bluetooth PAN network
+-->
+## 2. connect the bluetooth PAN network
 follow the previous example:
 we can use the command to show the network status like:
 ```shell
