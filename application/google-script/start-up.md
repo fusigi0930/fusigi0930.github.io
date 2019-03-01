@@ -91,6 +91,7 @@ trigger list till you remove it.
 the code will be:
 
 * this example is using calendar event
+
 ```javascript
 function registerTrigger() {
   ScriptApp.newTrigger('triggerExample')
