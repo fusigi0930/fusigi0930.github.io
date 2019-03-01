@@ -1,0 +1,105 @@
+# Google Script
+Google service, let you create some script/macro for your documents/mail/calendar/...
+it based on javascript, and the site is:
+```
+script: https://script.google.com
+advance google service api: https://console.cloud.google.com
+```
+
+## reference development documents
+Google release the development reference documents in
+```
+https://developers.google.com/apps-script/reference/
+```
+we can find the development api in there.
+
+## how to create a new script
+it have 2 methods to create new script:
+
+### create new script from script.google.com
+click 'new script' from https://script.google.com, then give it a project name
+
+### create new script from documents
+in your documents (sheets, writer, ...), choose "Script editor" from menu/Tools,
+and give it a project name
+
+## how to debug a script
+it have many methods, I give 2 methods in here, add the code to your scripts:
+
+### Logger
+```javascript
+e.g.
+Logger.log('string');
+Logger.log('string: %s', xxx);
+```
+and it will be shown in menu/View/Logs
+
+### console
+```javascript
+e.g.
+console.info('string');
+console.info('string: %s', xxx);
+```
+
+and it will be shown in menu/View/Stackdriver logging
+
+## how to run the script
+### run function from script editor
+the most easy way, you just use the menu/Run/Run Function in your script editor
+
+### run function from additional menu in your documents
+before you start run the function, you have to add a additional menu to your documents,
+following is the example code:
+
+* first you need crate a function with function name -- onOpen
+* this example is using google sheet
+
+```javascript
+function onOpen() {
+  var sheet = SpreadsheetApp.getActive();
+  var menuItems = [
+    {name: 'example', functionName: 'example'}
+  ];
+
+  sheet.addMenu('just sample', menuItems);
+}
+```
+
+* second, create the function "example"
+
+```javascript
+function example() {
+  console.info('run example');
+}
+```
+
+then you need reopen your documents (close it then open again), after this
+you can run the script by using menu/just sample/example
+
+### run function from trigger events
+there 2 way to register a new trigger event, and google provides many kind of events
+to use.
+
+#### register by script.google.com
+open one of projects from your script.google.com, you can find the menu in "..." icon,
+choose "trigger", then you just following the dialog to select the current function and
+trigger evnets for your script.
+
+#### register by function
+in this case, you only need run the code just once, the trigger will be stay in your
+trigger list till you remove it.
+the code will be:
+
+* this example is using calendar event
+```javascript
+function registerTrigger() {
+  ScriptApp.newTrigger('triggerExample')
+    .forUserCalendar('xxx@gmail.com')
+    .onEventUpdated()
+    .create();
+}
+
+function triggerExample(trigger_event) {
+  console.info('trigger event: %s', trigger_event);
+}
+```
