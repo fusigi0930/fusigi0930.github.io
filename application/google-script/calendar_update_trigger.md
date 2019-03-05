@@ -1,4 +1,4 @@
-a# Calendar Event Update
+# Calendar Event Update
 ## description
 in this case, I used Google extend service api to get which day event is updated
 while onEventUpdated is triggered.

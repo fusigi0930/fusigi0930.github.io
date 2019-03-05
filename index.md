@@ -9,6 +9,9 @@
 * [start up google script](application/google-script/start-up.md)
 * [calendar update event](application/google-script/calendar_update_trigger.md)
 
+### QT
+* [Deploy QT application for windows](application/qt/deploy-win.md)
+
 ## development
 * [hooking elf process](system/elf/hook-system-command.md)
 * [simple debug methods](system/linux/debug/analyze-trace-process.md)
