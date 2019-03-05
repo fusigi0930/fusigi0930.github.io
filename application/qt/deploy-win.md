@@ -11,7 +11,7 @@ deploy application more convenient.
 ## procedure
 ```bat
 cd <release>
-windeployqt.exe --qml_dir <src_path>\qml <application>
+<qt_common_folder>\bin\windeployqt.exe --qml_dir <src_path>\qml <application>
 ```
 
 this utility will copy the common libraries to the release folder
