@@ -10,8 +10,8 @@ deploy application more convenient.
 
 ## procedure
 ```bat
-cd &lt;release&gt;
-&lt;qt_common_folder&gt;\bin\windeployqt.exe --qml_dir &lt;src_path&gt;\qml &lt;application&gt;
+cd <release>
+<qt_common_folder>\bin\windeployqt.exe --qml_dir <src_path>\qml <application>
 ```
 
 this utility will copy the common libraries to the release folder
