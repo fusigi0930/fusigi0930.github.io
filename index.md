@@ -11,6 +11,7 @@
 
 ### QT
 * [Deploy QT application for windows](application/qt/deploy-win.md)
+* [Create yourself QML moduloe](application/qt/custom-qml.md)
 
 ## development
 * [hooking elf process](system/elf/hook-system-command.md)
