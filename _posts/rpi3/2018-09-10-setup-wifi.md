@@ -2,7 +2,7 @@
 layout: post
 title: setup ubuntu wifi in raspberry pi 3 b+
 description: setup wifi
-tags: wifi ubuntu linux system
+tags: wifi ubuntu linux system raspberrypi
 ---
 
 # setup wifi for raspberry pi3 b+
