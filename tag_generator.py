@@ -16,7 +16,14 @@ import os
 post_dir = '_posts/'
 tag_dir = 'tag/'
 
-filenames = glob.glob(post_dir + '*md')
+filenames = []
+for dirpath in os.walk(post_dir):
+    for files in dirpath[2]:
+        if files[-2:] != 'md':
+            continue
+        filenames.append(dirpath[0] + '/' + files)
+
+print(filenames)
 
 total_tags = []
 for filename in filenames:
@@ -41,7 +48,7 @@ total_tags = set(total_tags)
 old_tags = glob.glob(tag_dir + '*.md')
 for tag in old_tags:
     os.remove(tag)
-    
+
 if not os.path.exists(tag_dir):
     os.makedirs(tag_dir)
 
