@@ -6,7 +6,7 @@ highlighter:      rouge
 permalink:        pretty
 
 # Setup
-title:            ChuYuan
+title:            ChuYuan Chiang
 tagline:          'ChuYuan'
 description:      'technical experience'
 url:              'none'
@@ -25,8 +25,8 @@ gems:             [chuyuan-paginate, chuyuan-seo-tag, chuyuan-sitemap]
 github:
   repo:           https://github.com/fusigi0930/fusigi0930.github.io/
 
-tags:
+tags:             [c++, QT, lua]
 
 github_username:  fusigi0930
 facebook_username:
-linkedin_username:
+linkedin_username: chuyuan-chiang-98702576
