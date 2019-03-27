@@ -1,3 +1,32 @@
-theme: jekyll-theme-leap-day
-title: fusigi0930's github.io page
-description: to record and publish my technical experience  
+# Dependencies
+markdown:         kramdown
+highlighter:      rouge
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            ChuYuan
+tagline:          'ChuYuan'
+description:      'technical experience'
+url:              'none'
+
+author:
+  name:           'ChuYuan Chiang'
+  url:            'none'
+
+paginate:         2
+google_analytics: 'none'
+bing_seo:		      'none'
+emailme:          mailto:chuyuan.chiang@gmail.com
+
+gems:             [chuyuan-paginate, chuyuan-seo-tag, chuyuan-sitemap]
+
+github:
+  repo:           https://github.com/fusigi0930/fusigi0930.github.io/
+
+tags:
+
+github_username:  fusigi0930
+facebook_username:
+linkedin_username:
