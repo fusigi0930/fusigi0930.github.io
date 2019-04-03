@@ -1,9 +1,3 @@
----
-layout: post
-title: Android app get property method
-description: get prop
-tags: android-app java
----
 # Get property in Application (from android studio)
 android SDK dose not have methods to get/set property, we can use the following code to get property
 
