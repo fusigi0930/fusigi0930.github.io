@@ -1,2 +1,2 @@
 # Tags
-{% include _includes/archive.html %}
+{% include archive.html %}
