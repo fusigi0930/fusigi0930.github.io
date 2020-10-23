@@ -11,7 +11,7 @@ use linux utilities valgrind (it also can analyze memory leakage) and kcachegrin
 ## 1. install utilities
 in ubuntu system, use the command to install these utilities:
 ```shell
-install kcachegrind and valgrind tool
+sudo apt install kcachegrind valgrind
 ```
 
 ## 2. run the target process
