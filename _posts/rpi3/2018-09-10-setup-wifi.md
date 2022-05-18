@@ -191,3 +191,21 @@ network:
         "ssid-dormaemon":
           password: "doraemon"
 ```  
+
+in face, you also can set static ip in here
+```shell
+network:
+  version: 2
+  renderer: networkd
+  wifis:
+    wlan0:
+      dhcp4: no
+        addresses: [192.168.10.2/24]
+      dhcp6: no
+      gateway4: 192.168.10.1
+      nameservers:
+        addresses: [192.168.10.1, 8.8.8.8]
+      access-points:
+        "ssid-dormaemon":
+          password: "doraemon"
+```
