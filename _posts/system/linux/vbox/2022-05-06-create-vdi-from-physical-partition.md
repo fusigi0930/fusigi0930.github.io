@@ -6,6 +6,7 @@ tags: linux vbox
 ---
 # To simulate your linux system in windows while you are using the multiple boot in your laptop
 
+if you want to access your system directly, please see the setcion 10
 
 ## 1. dump your linux rootfs partition
 if passiable, use USB boot to dump your partition, and make sure your target storage avaliable is enough.
@@ -103,7 +104,7 @@ mark the /home directory information to comments
 # xxxxxxx /home xxxxxxxxxxxx
 ```
 
-## 7. create physical disk vmdk in 
+## 7. create physical disk vmdk
 get the pyhsical drive information by using Windows Power shell with command:
 
 ```cmd
@@ -138,7 +139,7 @@ your physical disk information should be shown in the List box.
 
 2. add the vmdk media into your virtual machine stoarge
 
-## 8. add physical disk partition for home directory
+## 9. add physical disk partition for home directory
 assume the vmdk media in your vm linux device node should be /dev/sdb, the your oringial home directory is in partition 5,
 add it into /etc/fstab
 
@@ -147,3 +148,43 @@ add it into /etc/fstab
 ```
 
 after these steps, your vm linux can access the partition in your physical drive.
+
+## 10. use the system directly
+
+because the vbox supports UEFI feature weakly, so we still need to do a fake system with legacy boot and boot from the system from ssd/hdd.
+
+** it might have some version for virutal box with SATA (AHCI) access rawdisk issue, if you impact with this issue, just change your storage to IDE interface. **
+
+for convinent, I call the linux system in vbox is vbox-linux, and the linux for dual system is pc-linux
+
+### 10.1 prepare
+
+1. install a minimum setup with the same version Ubuntu or others linux <-- this one is vbox-linux
+
+2. make sure all of devices are recorded in pc-linux's fstab (/etc/fstab) are using UUID
+
+3. create the physical disk vmdk, the procedure is the same as setion 7
+
+4. add the vmdk into the virtual machine storage, and make sure the vmdk is bottom of the storage for vbox-linux
+
+### 10.2 setup the grub for vbox-linux
+
+the point for this method is use the grub in vbox-linux then boot the system from pc-linux, it need to update the grub in vbox-linux
+
+1. start the vbox-linux
+
+2. run the command, let it find the os from all storages
+
+```shell
+sudo update-grub
+```
+
+3. if it works, it should be have a menu entry likes "Ubuntu 20.04 LTS (20.04) (on /dev/sdb2) will show on the /boot/grub/grub.cfg
+
+4. modify the GRUB_DEFAULT index to the menu entry previous, then run the command again
+
+```shell
+sudo update-grub
+```
+
+after that, the you should boot into the pc-linux from virtual box by default
